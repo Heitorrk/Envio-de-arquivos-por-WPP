@@ -1,0 +1,27 @@
+﻿name: build
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Java 21
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+          cache: gradle
+      - name: Grant execute to gradlew
+        run: git update-index --add --chmod=+x gradlew
+      - name: Build (clean, test, shadowJar)
+        run: .\gradlew.bat --no-daemon clean test shadowJar
+      - name: Upload artifact (fat jar)
+        uses: actions/upload-artifact@v4
+        with:
+          name: contrax-fat-jar
+          path: build\libs\*.jar
