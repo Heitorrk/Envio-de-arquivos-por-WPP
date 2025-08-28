@@ -1,18 +1,8 @@
-﻿# Build/IDE
-/build/
+﻿/build/
 /.gradle/
 /out/
 /.idea/
 /*.iml
-/logs/
-/dist/
-/bin/
-
-# SO
-.DS_Store
-Thumbs.db
-
-# Dados do cliente / execução
 contracheques/
 funcionarios.xlsx
 mensagem.txt
@@ -20,7 +10,3 @@ mensagem.txt
 *.csv
 *.log
 contraApp.jar
-
-# Permitir pastas de docs/modelos
-!docs/
-!templates/
